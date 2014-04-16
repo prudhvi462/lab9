@@ -1,0 +1,171 @@
+--Prudhvi Krishna Narra  04/15/2014--
+
+
+
+1. CREATE STATEMENTS FOR ALL THE TABLES SHOWN IN THE ENTITY RELEATIONSHIP DIAGRAM
+--------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE people (
+  pid      char(4) not null,
+  firstname     text,
+  lastname     text,
+  designation text,
+ primary key(pid)
+);
+
+CREATE TABLE engineers (
+  pid      char(4) not null,
+  firstname     text,
+  lastname     text,
+  age       numeric,
+  highestdegree     text,
+  favvideogame text,
+ primary key(pid)
+);
+
+CREATE TABLE flightoperator (
+  pid      char(4) not null,
+  firstname     text,
+  lastname      text,
+  age numeric,
+  chairprefered text,
+  preferreddrink text,
+ primary key(pid)
+);
+
+CREATE TABLE astronauts (
+  pid      char(4) not null,
+  firstname     text,
+  lastname     text,
+  yearsinflying text,
+  age numeric,
+ primary key(pid)
+);
+
+CREATE TABLE suppliers (
+  pid      char(4) not null,
+  name     text,
+  address text,
+ primary key(pid)
+);
+
+CREATE TABLE spacecraft (
+  spaceid      char(4) not null,
+  name     text,
+  tailnumber text,
+  fueltype text,
+  weight numeric,
+  crewcapacity text,
+ primary key(cid)
+);
+
+CREATE TABLE parts (
+  partid      char(4) not null,
+  name     text,
+  description     text,
+ primary key(partid)
+);
+
+CREATE TABLE systems (
+  syid      char(4) not null,
+  name     text,
+  model    numeric,
+  performance text,
+  type text,
+ primary key(sid)
+);
+
+CREATE TABLE crew (
+pid char(4) not null,
+spaceid char(4) not null references crafts(cid),
+primary key (pid)
+);
+
+CREATE TABLE partscatalog (
+pid char(4) not null,
+partid char(4) not null references part(partid),
+primary key (pid)
+);
+
+CREATE TABLE sysspace (
+spaceid char(4) not null,
+syid char(4) not null references systems(sid),
+primary key (cid)
+);
+
+CREATE TABLE sysparts (
+partid char(4) not null,
+syid char(4) not null references systems(sid),
+primary key (partid)
+);
+
+
+2. INSERT STATEMENTS FOR ALL THE TABLES LISTED ABOVE
+------------------------------------------------------------------------------
+
+People TABLE
+-----------------------
+
+INSERT INTO people( pid, firstname,lastname, designation, age )
+  VALUES('p001', 'Rakesh', 'Sharma', 'aeronautical', 65);
+
+INSERT INTO people( pid, firstname,lastname, designation, age )
+  VALUES('p002', 'Neil', 'Amstrong', 'aeronautical', 57);
+
+INSERT INTO people( pid, firstname,lastname, designation, age )
+  VALUES('p003', 'kalpana', 'chawla', 'aeronautical', 36);
+
+INSERT INTO people( pid, firstname,lastname, designation, age )
+  VALUES('p004', 'yuri', 'gagarin', 'aeronautical', 38);
+
+INSERT INTO people( pid, firstname,lastname, designation, age )
+  VALUES('p005', 'abdul kalam', 'APJ', 'aeronautical', 65);
+
+
+ENGINEERS TABLE
+-----------------------
+
+INSERT INTO engineers( pid, firstname,lastname,highestdegree,favvideogame, age )
+  VALUES('p001', 'Rakesh',' Sharma', 'aeronautical','Apollo', 65);
+
+INSERT INTO engineers( pid, name, designation, age )
+  VALUES('p002', 'Neil',' Amstrong', 'aeronautical','lunar', 57);
+
+SUPPLIERS
+-----------------------
+
+INSERT INTO suppliers( pid, name, address )
+  VALUES('p004', ' yuri', 'russia');
+
+INSERT INTO suppliers( pid, name, designation, age )
+  VALUES('p005', ' kalam', 'india');
+
+ASTRONAUTS
+-------------------------
+
+INSERT INTO astronauts( pid, firstname,lastname, yearinflying, age )
+  VALUES('p002', 'Neil',' Amstrong', 1969, 57);
+
+INSERT INTO astronauts( pid, firstname,lastname, yearinflying, age )
+  VALUES('p003', 'kalpana',' chawla', 1997, 36);
+
+FlightOPERATORS
+-----------------------
+INSERT INTO flightoperators( pid, firstname,lastname,  age ,chairprefered,prefereddrink)
+  VALUES('p002', 'Neil',' Amstrong', 57,1,'coke');
+
+INSERT INTO flightoperators( pid, firstname,lastname , age,chairprefered,prefereddrink)
+  VALUES('p001', 'Rakesh ','Sharma',65,2,'pepsie');
+
+spacecraft
+--------------------------
+INSERT INTO spacecraft( spaceid, name, tailnumber,weight,fueltype,crewcapacity )
+  VALUES('c001', 'Apolo-15', 123,300,'Hydrogen', 12);
+
+INSERT INTO spacecraft( spaceid, name, tailnumber,weight,fueltype,crewcapacity )
+  VALUES('c002', 'Apolo-17', 432, 400,'hydrogen',15);
+
+SYSTEMS
+---------------------------
+INSERT INTO systems( syid, name, model,performane,type )
+  VALUES('s001', 'subcooling', '2012', 'good','environmental sub sustem');
